@@ -57,5 +57,46 @@ namespace ControldeversionsiDocumentaciodecodi
             this.descripció = descripció;
             this.talla = talla;
         }
+
+        public Producte Copia()
+        {
+            return (Producte)MemberwiseClone();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            else
+            {
+                Producte p = (Producte)obj;
+
+                if (preu == p.Preu) return true;
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null)
+            {
+                return 1;
+            }
+
+            Producte otherobj = obj as Producte;
+            if (otherobj != null)
+                return this.preu.CompareTo(otherobj.Preu);
+            else
+                throw new ArgumentException("Error!!");
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

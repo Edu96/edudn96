@@ -12,6 +12,9 @@ namespace ControldeversionsiDocumentaciodecodi
         private int id;
         private string descripció, talla;
 
+        /// <summary>
+        /// Propietat de preu, per visualitzar i modificar.
+        /// </summary>
         public double Preu
         {
             get { return preu; }
@@ -40,54 +43,19 @@ namespace ControldeversionsiDocumentaciodecodi
         {
 
         }
-
+        /// <summary>
+        /// Constructor amb tots els parametres.
+        /// </summary>
+        /// <param name="preu">parametre preu</param>
+        /// <param name="id">parametre id</param>
+        /// <param name="descripció">parametre descripcio</param>
+        /// <param name="talla">parametre talla</param>
         public Producte(double preu, int id, string descripció, string talla)
         {
             this.preu = preu;
             this.id = id;
             this.descripció = descripció;
             this.talla = talla;
-        }
-
-        public Producte Copia()
-        {
-            return (Producte)MemberwiseClone();
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null || GetType() != obj.GetType())
-                return false;
-
-            else
-            {
-                Producte p = (Producte)obj;
-
-                if (preu == p.Preu) return true;
-                else
-                {
-                    return false;
-                }
-            }
-        }
-
-        public int CompareTo(object obj)
-        {
-            if (obj == null)
-            {
-                return 1;
-            }
-
-            Producte otherobj = obj as Producte;
-            if (otherobj != null)
-                return this.preu.CompareTo(otherobj.Preu);
-            else
-                throw new ArgumentException("Error!!");
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
         }
     }
 }
